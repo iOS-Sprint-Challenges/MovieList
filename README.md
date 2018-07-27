@@ -10,12 +10,11 @@ Begin by forking this repository. Clone your fork to your local computer. Commit
 
 Please view the screen recording so you will know what your finished project should look like:
 
-![](https://user-images.githubusercontent.com/16965587/43304324-e4699a52-9130-11e8-90ae-48616fa9e7bf.gif)
-
-
 Good luck!
 
 ### Screen Recording
+
+![](https://user-images.githubusercontent.com/16965587/43304324-e4699a52-9130-11e8-90ae-48616fa9e7bf.gif)
 
 ### Requirements
 
