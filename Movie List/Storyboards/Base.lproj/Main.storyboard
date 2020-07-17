@@ -75,7 +75,37 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n4V-xx-MWg" id="luW-9o-czg">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLn-aq-gb1">
+                                                    <rect key="frame" x="20" y="8.3333333333333357" width="42" height="27"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Byx-4L-cYd">
+                                                    <rect key="frame" x="325" y="7" width="64" height="30"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Seen"/>
+                                                    <state key="selected" title="Not Seen">
+                                                        <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="seenButtonPressed:" destination="n4V-xx-MWg" eventType="touchUpInside" id="BGR-qi-5Ps"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oLn-aq-gb1" firstAttribute="centerY" secondItem="luW-9o-czg" secondAttribute="centerY" id="9XV-MI-DqV"/>
+                                                <constraint firstItem="Byx-4L-cYd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oLn-aq-gb1" secondAttribute="trailing" constant="8" symbolic="YES" id="Hm4-kQ-1jh"/>
+                                                <constraint firstAttribute="trailing" secondItem="Byx-4L-cYd" secondAttribute="trailing" constant="25" id="sXx-uZ-oO8"/>
+                                                <constraint firstItem="Byx-4L-cYd" firstAttribute="centerY" secondItem="luW-9o-czg" secondAttribute="centerY" id="u4l-Xa-iUJ"/>
+                                                <constraint firstItem="oLn-aq-gb1" firstAttribute="leading" secondItem="luW-9o-czg" secondAttribute="leading" constant="20" id="yxD-CV-Krr"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="seenButton" destination="Byx-4L-cYd" id="amL-fj-2qb"/>
+                                            <outlet property="titleLabel" destination="oLn-aq-gb1" id="GZy-vR-5mx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

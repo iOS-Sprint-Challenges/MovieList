@@ -9,22 +9,26 @@
 import UIKit
 
 class AllMoviesViewController: UIViewController {
+    
+    //MARK: - Properties
+    var movieList: [Movie]?
 
+    //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
+    
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
-
 }
 
 //MARK: - UITableViewDataSource
 extension AllMoviesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return movieList?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,5 +43,8 @@ extension AllMoviesViewController: UITableViewDataSource{
 //MARK: - UITableViewDelegate
 extension AllMoviesViewController: UITableViewDelegate{
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
     
 }
