@@ -15,7 +15,7 @@ protocol NewMovieDelegate {
 class AddMovieViewController: UIViewController {
     
     //MARK: - Properties
-    private var delegate: NewMovieDelegate?
+    var delegate: NewMovieDelegate?
     
     //MARK: - Outlets
     @IBOutlet weak var movieTitle: UITextField!
@@ -25,6 +25,8 @@ class AddMovieViewController: UIViewController {
     @IBAction func addMovieToArray(_ sender: UIButton) {
         if let newMovie = movieTitle.text, !newMovie.isEmpty{
             delegate?.addNewMovie(movie: Movie(title: newMovie))
+            tabBarController?.selectedIndex = 0
+            movieTitle.text = ""
         }
     }
     

@@ -23,8 +23,11 @@ class AllMoviesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         movieList.append(Movie(title: "Spyderman"))
+        
+        
+        let newMovieVC = tabBarController!.viewControllers?[1] as? AddMovieViewController
+        newMovieVC?.delegate = self
     }
-    
 }
 
 //MARK: - UITableViewDataSource
@@ -58,10 +61,19 @@ extension AllMoviesViewController: UITableViewDelegate{
     }
 }
 
-//MARK: -
+//MARK: - MovieSeenStateDelegate
 extension AllMoviesViewController: MovieSeenStateDelegate{
     func seenStateChanged(index: IndexPath) {
         movieList[index.row].seen.toggle()
+        tableView.reloadData()
+    }
+}
+
+
+//MARK: - NewMovieDelegate
+extension AllMoviesViewController: NewMovieDelegate{
+    func addNewMovie(movie: Movie) {
+        movieList.append(movie)
         tableView.reloadData()
     }
     

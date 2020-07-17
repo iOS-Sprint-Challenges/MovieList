@@ -147,7 +147,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="eSu-xz-AUq" kind="relationship" relationship="viewControllers" id="Ocj-gU-kqq"/>
-                        <segue destination="X26-Sg-u4u" kind="relationship" relationship="viewControllers" id="oCo-Ed-05h"/>
+                        <segue destination="X26-Sg-u4u" kind="relationship" relationship="viewControllers" destinationCreationSelector="AddNewMovie" id="oCo-Ed-05h"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4P-Vg-Ji8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
