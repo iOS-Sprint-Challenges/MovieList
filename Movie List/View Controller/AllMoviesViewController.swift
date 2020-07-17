@@ -12,9 +12,11 @@ class AllMoviesViewController: UIViewController {
     
     //MARK: - Properties
     private var movieList = [Movie]()
+    private var filteredList = [Movie]()
     
     //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     //MARK: - View Life Cycle
@@ -22,25 +24,50 @@ class AllMoviesViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
         movieList.append(Movie(title: "Spyderman"))
         
+        loadMovies()
+        searchBar.autocapitalizationType = .none
+        
+        tableView.rowHeight = 50.0
         
         let newMovieVC = tabBarController!.viewControllers?[1] as? AddMovieViewController
         newMovieVC?.delegate = self
+    }
+    
+    //MARK: - Private methods
+    
+    private func loadMovies() {
+        filteredList = movieList
+        tableView.reloadData()
+    }
+    
+    private func filterMovies() {
+        
+        if let inputValue = searchBar.text, !inputValue.isEmpty {
+            //filter and reload table view
+            filteredList = movieList.filter{$0.title.contains(inputValue)}
+            tableView.reloadData()
+        }else{
+            //display entire array
+            loadMovies()
+        }
+        
     }
 }
 
 //MARK: - UITableViewDataSource
 extension AllMoviesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieList.count
+        return filteredList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell else {return UITableViewCell() }
         
-        let data = movieList[indexPath.row]
+        let data = filteredList[indexPath.row]
         
         cell.titleLabel.text = data.title
         cell.seenButton.isSelected = data.seen
@@ -60,7 +87,7 @@ extension AllMoviesViewController: UITableViewDelegate{
         
         if editingStyle == .delete{
             self.movieList.remove(at: indexPath.row)
-            self.tableView.reloadData()
+            loadMovies()
         }
     }
 }
@@ -69,7 +96,7 @@ extension AllMoviesViewController: UITableViewDelegate{
 extension AllMoviesViewController: MovieSeenStateDelegate{
     func seenStateChanged(index: IndexPath) {
         movieList[index.row].seen.toggle()
-        tableView.reloadData()
+        loadMovies()
     }
 }
 
@@ -78,8 +105,13 @@ extension AllMoviesViewController: MovieSeenStateDelegate{
 extension AllMoviesViewController: NewMovieDelegate{
     func addNewMovie(movie: Movie) {
         movieList.append(movie)
-        tableView.reloadData()
+        loadMovies()
     }
-    
-    
+}
+
+
+extension AllMoviesViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterMovies()
+    }
 }

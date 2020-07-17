@@ -72,7 +72,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kXc-kO-qOQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MovieCell" id="n4V-xx-MWg" customClass="MovieTableViewCell" customModule="Movie_List" customModuleProvider="target">
@@ -117,18 +117,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mcd-Ld-sBT">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="dz1-TZ-mRO"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="kXc-kO-qOQ" firstAttribute="top" secondItem="VEE-om-BTQ" secondAttribute="top" id="6KT-1B-Q9b"/>
-                            <constraint firstItem="kXc-kO-qOQ" firstAttribute="bottom" secondItem="VEE-om-BTQ" secondAttribute="bottom" id="Qsl-ZX-8U5"/>
-                            <constraint firstItem="kXc-kO-qOQ" firstAttribute="trailing" secondItem="VEE-om-BTQ" secondAttribute="trailing" id="hOr-EC-KEB"/>
-                            <constraint firstItem="kXc-kO-qOQ" firstAttribute="leading" secondItem="VEE-om-BTQ" secondAttribute="leading" id="tYx-qU-kTf"/>
+                            <constraint firstItem="kXc-kO-qOQ" firstAttribute="bottom" secondItem="VEE-om-BTQ" secondAttribute="bottom" id="54y-Xk-ghH"/>
+                            <constraint firstItem="kXc-kO-qOQ" firstAttribute="top" secondItem="mcd-Ld-sBT" secondAttribute="bottom" id="8yb-gt-m8b"/>
+                            <constraint firstItem="mcd-Ld-sBT" firstAttribute="leading" secondItem="VEE-om-BTQ" secondAttribute="leading" id="CFp-Bb-oN1"/>
+                            <constraint firstItem="mcd-Ld-sBT" firstAttribute="trailing" secondItem="VEE-om-BTQ" secondAttribute="trailing" id="GaH-BB-0HE"/>
+                            <constraint firstItem="kXc-kO-qOQ" firstAttribute="leading" secondItem="VEE-om-BTQ" secondAttribute="leading" id="OlP-tf-FDP"/>
+                            <constraint firstItem="mcd-Ld-sBT" firstAttribute="top" secondItem="VEE-om-BTQ" secondAttribute="top" id="XPq-xN-5UC"/>
+                            <constraint firstItem="kXc-kO-qOQ" firstAttribute="trailing" secondItem="VEE-om-BTQ" secondAttribute="trailing" id="tsS-Ym-XhS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VEE-om-BTQ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Movies" image="Clapboard" id="5uG-09-qlf"/>
                     <connections>
+                        <outlet property="searchBar" destination="mcd-Ld-sBT" id="WDh-ao-o4s"/>
                         <outlet property="tableView" destination="kXc-kO-qOQ" id="aSC-87-2eN"/>
                     </connections>
                 </viewController>
