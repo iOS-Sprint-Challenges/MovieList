@@ -24,6 +24,7 @@ class AllMoviesViewController: UIViewController {
         tableView.dataSource = self
         movieList.append(Movie(title: "Spyderman"))
     }
+    
 }
 
 //MARK: - UITableViewDataSource

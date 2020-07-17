@@ -33,6 +33,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTW-UT-oaK">
                                         <rect key="frame" x="162.66666666666666" y="131.66666666666666" width="73" height="30"/>
                                         <state key="normal" title="Add movie"/>
+                                        <connections>
+                                            <action selector="addMovieToArray:" destination="X26-Sg-u4u" eventType="touchUpInside" id="Kdl-rz-VAm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -52,6 +55,9 @@
                         <viewLayoutGuide key="safeArea" id="S6e-Tn-ibO"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add New Movies" image="Plus" id="bnN-mW-Rj3"/>
+                    <connections>
+                        <outlet property="movieTitle" destination="cll-Ip-HXh" id="6T0-FW-RPb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ba-lC-3O0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
