@@ -58,6 +58,10 @@ extension AllMoviesViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
+        if editingStyle == .delete{
+            self.movieList.remove(at: indexPath.row)
+            self.tableView.reloadData()
+        }
     }
 }
 
