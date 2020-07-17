@@ -11,8 +11,8 @@ import UIKit
 class AllMoviesViewController: UIViewController {
     
     //MARK: - Properties
-    var movieList: [Movie]?
-
+    private var movieList = [Movie]()
+    
     //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,18 +22,27 @@ class AllMoviesViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        movieList.append(Movie(title: "Spyderman"))
     }
 }
 
 //MARK: - UITableViewDataSource
 extension AllMoviesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieList?.count ?? 1
+        return movieList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell else {return UITableViewCell() }
+        
+        let data = movieList[indexPath.row]
+        
+        cell.titleLabel.text = data.title
+        cell.seenButton.isSelected = data.seen
+        cell.movieIndex = indexPath
+        
+        cell.delegate = self
         
         return cell
     }
@@ -46,5 +55,14 @@ extension AllMoviesViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
     }
+}
+
+//MARK: -
+extension AllMoviesViewController: MovieSeenStateDelegate{
+    func seenStateChanged(index: IndexPath) {
+        movieList[index.row].seen.toggle()
+        tableView.reloadData()
+    }
+    
     
 }

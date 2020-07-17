@@ -8,24 +8,25 @@
 
 import UIKit
 
+protocol MovieSeenStateDelegate {
+    func seenStateChanged(index: IndexPath)
+}
+
 class MovieTableViewCell: UITableViewCell {
     
     //MARK: - Properties
+    var movieIndex: IndexPath!
+    var delegate : MovieSeenStateDelegate?
     
     //MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var seenButton: UIButton!
     
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     //MARK: - Actions
     @IBAction func seenButtonPressed(_ sender: UIButton) {
         //Trigger a custom delegate to change the state
+        delegate?.seenStateChanged(index: movieIndex)
     }
     
 
